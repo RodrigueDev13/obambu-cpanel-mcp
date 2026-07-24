@@ -9,6 +9,19 @@ It exposes tools for domains, DNS zones, email accounts, MySQL databases, and fi
 - Node.js 18+
 - A cPanel account with API token access (Security → Manage API Tokens in cPanel)
 
+## Getting your cPanel credentials (Obambu example)
+
+The four env vars below can come from any cPanel host, but here's how to find them on **Obambu**:
+
+- **`CPANEL_HOST`** — your server hostname, e.g. `cp4.obambu.com` (or your own domain if cPanel is reachable at `https://yourdomain.com:2083`). Find it in your Obambu welcome email, or in your domain's DNS zone: look for an `A` record named `cpanel` (e.g. `cpanel.yourdomain.com`) — that same server also answers at its `cpX.obambu.com` hostname.
+- **`CPANEL_PORT`** — `2083` (cPanel's default HTTPS port). Leave it unless your host says otherwise.
+- **`CPANEL_USERNAME`** — your cPanel account username, shown top-right when logged into cPanel, or in the welcome email Obambu sent when the hosting account was created.
+- **`CPANEL_API_TOKEN`** — generate one yourself, it is *not* your cPanel password:
+  1. Log into cPanel at `https://<CPANEL_HOST>:2083`
+  2. Go to **Security → Manage API Tokens**
+  3. Click **Create**, give it a name (e.g. `mcp-server`), optionally restrict it to specific ACLs, then **Create**
+  4. Copy the token immediately — cPanel only shows it once
+
 ## Using it with an MCP client (npx, recommended)
 
 Published on npm as [`obambu-cpanel-mcp`](https://www.npmjs.com/package/obambu-cpanel-mcp) — no clone or build needed. Add it to your MCP client config (e.g. Claude Desktop / Claude Code):
