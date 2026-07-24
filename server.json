@@ -1,0 +1,11 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.RodrigueDev13/obambu-cpanel-mcp",
+  "description": "MCP server exposing cPanel UAPI (domains, DNS, email, MySQL, files) as tools for AI assistants.",
+  "title": "Obambu cPanel MCP",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/RodrigueDev13/obambu-cpanel-mcp",
+    "source": "github"
+  }
+}
