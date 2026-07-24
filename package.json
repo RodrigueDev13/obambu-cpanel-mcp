@@ -1,13 +1,37 @@
 {
   "name": "obambu-cpanel-mcp",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.2",
+  "mcpName": "io.github.RodrigueDev13/obambu-cpanel-mcp",
+  "description": "MCP server exposing cPanel UAPI (domains, DNS, email, MySQL, files) as tools for AI assistants",
   "type": "module",
   "main": "dist/index.js",
+  "bin": {
+    "obambu-cpanel-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigueDev13/obambu-cpanel-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "cpanel",
+    "claude",
+    "ai-tools"
+  ],
+  "author": "RodrigueDev13",
+  "license": "MIT",
   "scripts": {
     "build": "tsc -p .",
     "start": "node dist/index.js",
-    "dev": "npx.cmd tsx src/index.ts"
+    "dev": "npx.cmd tsx src/index.ts",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",

@@ -3,9 +3,44 @@
   "name": "io.github.RodrigueDev13/obambu-cpanel-mcp",
   "description": "MCP server exposing cPanel UAPI (domains, DNS, email, MySQL, files) as tools for AI assistants.",
   "title": "Obambu cPanel MCP",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "repository": {
     "url": "https://github.com/RodrigueDev13/obambu-cpanel-mcp",
     "source": "github"
-  }
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "obambu-cpanel-mcp",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeHint": "npx",
+      "environmentVariables": [
+        {
+          "name": "CPANEL_HOST",
+          "description": "cPanel server hostname or IP address",
+          "isRequired": true
+        },
+        {
+          "name": "CPANEL_PORT",
+          "description": "cPanel API port",
+          "default": "2083"
+        },
+        {
+          "name": "CPANEL_USERNAME",
+          "description": "cPanel account username",
+          "isRequired": true
+        },
+        {
+          "name": "CPANEL_API_TOKEN",
+          "description": "cPanel API token (Security -> Manage API Tokens)",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
 }
