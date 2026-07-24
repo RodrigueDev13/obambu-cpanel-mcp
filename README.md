@@ -82,6 +82,21 @@ Add it to your MCP client config (e.g. Claude Desktop / Claude Code), pointing a
 | `grant_database_privileges` | Grant a user privileges on a database |
 | `cpanel_uapi_call` | Call any UAPI module/function directly for anything not covered above |
 
+## Usage examples
+
+Once connected, just talk to your assistant in plain language — it picks the right tool:
+
+- *"Test the connection to my cPanel account"* → `get_account_summary`
+- *"What domains and subdomains are on this hosting account?"* → `list_domains`
+- *"Show me the DNS records for example.com"* → `list_dns_records`
+- *"Add an A record for shop.example.com pointing to 1.2.3.4"* → `add_dns_record`
+- *"Create a mailbox contact@example.com"* → `create_email`
+- *"Create a MySQL database and user for my new app, then grant privileges"* → `create_database` + `create_database_user` + `grant_database_privileges`
+- *"List the files in public_html"* → `list_files`
+- *"Read config/filesystems.php and fix this path"* → `cpanel_uapi_call` with `module: "Fileman", function: "get_file_content"` / `save_file_content`
+
+Because tool calls map directly to UAPI modules, this is also useful for real migration/deployment workflows — e.g. moving a site to a new cPanel account, provisioning a database for a fresh app, or auditing DNS before a domain cutover.
+
 ## Notes on `Fileman`
 
 Only `list_files` (backed by `Fileman::list_files`) and, through the `cpanel_uapi_call` escape hatch, `get_file_content` / `save_file_content` are known to work reliably for reading and writing individual files. Bulk filesystem operations (`extract_files`, `rename`, `mkdir`, `fileop`, `delete_files`, ...) are not guaranteed to be available depending on your cPanel version/provider — test before relying on them, and prefer cPanel's File Manager UI for bulk moves, extraction, and deletion.
