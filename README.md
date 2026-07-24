@@ -9,25 +9,37 @@ It exposes tools for domains, DNS zones, email accounts, MySQL databases, and fi
 - Node.js 18+
 - A cPanel account with API token access (Security → Manage API Tokens in cPanel)
 
-## Setup
+## Using it with an MCP client (npx, recommended)
+
+Published on npm as [`obambu-cpanel-mcp`](https://www.npmjs.com/package/obambu-cpanel-mcp) — no clone or build needed. Add it to your MCP client config (e.g. Claude Desktop / Claude Code):
+
+```json
+{
+  "mcpServers": {
+    "obambu-cpanel": {
+      "command": "npx",
+      "args": ["-y", "obambu-cpanel-mcp"],
+      "env": {
+        "CPANEL_HOST": "your-server-hostname-or-ip",
+        "CPANEL_PORT": "2083",
+        "CPANEL_USERNAME": "your-cpanel-username",
+        "CPANEL_API_TOKEN": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+## Running from source
 
 ```bash
-git clone https://github.com/<your-username>/obambu-cpanel-mcp.git
+git clone https://github.com/RodrigueDev13/obambu-cpanel-mcp.git
 cd obambu-cpanel-mcp
 npm install
 cp .env.example .env
 ```
 
-Edit `.env` with your cPanel details:
-
-```
-CPANEL_HOST=your-server-hostname-or-ip
-CPANEL_PORT=2083
-CPANEL_USERNAME=your-cpanel-username
-CPANEL_API_TOKEN=paste-your-api-token-here
-```
-
-Build and run:
+Edit `.env` with your cPanel details, then:
 
 ```bash
 npm run build
@@ -40,9 +52,7 @@ For local development without building first:
 npm run dev
 ```
 
-## Using it with an MCP client
-
-Add it to your MCP client config (e.g. Claude Desktop / Claude Code), pointing at the built entrypoint:
+When running from source, point your MCP client at the built entrypoint instead of `npx`:
 
 ```json
 {
