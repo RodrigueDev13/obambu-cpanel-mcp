@@ -14,7 +14,7 @@ It exposes tools for domains, DNS zones, email accounts, MySQL databases, and fi
 The four env vars below can come from any cPanel host, but here's how to find them on **Obambu**:
 
 - **`CPANEL_HOST`** — your server hostname, e.g. `cp4.obambu.com` (or your own domain if cPanel is reachable at `https://yourdomain.com:2083`). Find it in your Obambu welcome email, or in your domain's DNS zone: look for an `A` record named `cpanel` (e.g. `cpanel.yourdomain.com`) — that same server also answers at its `cpX.obambu.com` hostname.
-- **`CPANEL_PORT`** — `2083` (cPanel's default HTTPS port). Leave it unless your host says otherwise.
+- **`CPANEL_PORT`** — `*****` (cPanel's default HTTPS port). Leave it unless your host says otherwise.
 - **`CPANEL_USERNAME`** — your cPanel account username, shown top-right when logged into cPanel, or in the welcome email Obambu sent when the hosting account was created.
 - **`CPANEL_API_TOKEN`** — generate one yourself, it is *not* your cPanel password:
   1. Log into cPanel at `https://<CPANEL_HOST>:2083`
